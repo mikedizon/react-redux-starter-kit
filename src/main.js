@@ -11,6 +11,8 @@ const MOUNT_ELEMENT = document.getElementById('root')
 // set up material-ui
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {cyan500} from 'material-ui/styles/colors';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 // react-tap temporary fix
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -31,12 +33,15 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router
 })
 
+
+const muiTheme = getMuiTheme();
+
 let render = (key = null) => {
   const routes = require('./routes/index').default(store)
   const App = (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <MuiThemeProvider muiTheme={muiTheme}>
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
+        <div>
           <Router history={history} children={routes} key={key} />
         </div>
       </Provider>
