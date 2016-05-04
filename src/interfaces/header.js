@@ -1,5 +1,10 @@
 /* @flow */
 
 export type HeaderStateObject = {
-  open: boolean
+  open: boolean,
+  title:String
+}
+
+export type HeaderObject = {
+  title:String
 }

@@ -6,6 +6,7 @@ import type { HeaderStateObject } from '../interfaces/header'
 // Constants
 // ------------------------------------
 export const TOGGLE_NAV = 'TOGGLE_NAV'
+export const UPDATE_TITLE = 'UPDATE_TITLE'
 
 // ------------------------------------
 // Actions
@@ -25,9 +26,17 @@ export function toggle (): Action {
   }
 }
 
+export function updateTitle (title:string): Action {
+  return {
+    type: UPDATE_TITLE,
+    payload:title
+  }
+}
+
 
 export const actions = {
-  toggle
+  toggle,
+  updateTitle
 }
 
 // ------------------------------------
@@ -38,6 +47,9 @@ export const actions = {
 const ACTION_HANDLERS = {
   [TOGGLE_NAV]: (state: HeaderStateObject, action): HeaderStateObject => {
     return state.open != false ? ({ ...state, open:false}) : ({ ...state, open:true})
+  },
+  [UPDATE_TITLE]: (state: HeaderStateObject, action: {payload:HeaderObject}): HeaderStateObject => {
+    return ({ ...state, title:action.payload})
   }
 }
 

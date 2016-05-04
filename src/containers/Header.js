@@ -17,7 +17,8 @@ const mapActionCreators = {
 }
 
 const mapStateToProps = (state) => ({
-  open: state.header.open
+  open: state.header.open,
+  title:state.header.title
 })
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:
